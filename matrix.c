@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoye <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/09/27 20:32:57 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/02 16:51:42 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		matrix (int count_fig, int resize)
+void		min_square(int count_fig, int resize)
 {
 	static int	size = 2;
 	char		**matrix;
@@ -41,8 +41,8 @@ void		matrix (int count_fig, int resize)
 
 int		main()
 {
-	matrix (26, 0);
-	matrix (26, 1);
-	matrix (26, 1);
+	min_square(26, 0);
+	min_square(26, 1);
+	min_square(26, 1);
 	return (0);
 }
