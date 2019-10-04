@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   get_matrix.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/02 17:53:07 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/04 13:50:47 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 // Определяет размер минимального квадрата, в который помещаются фигуры
 // ? Возможно написать алгоритм без статической переменной ?
-// ? Почему ничего не возвращает ?
-void		min_square(int count_fig, int resize)
+char		**get_matrix(int count_fig, int resize)
 {
 	static int	size = 2;
 	char		**matrix;
@@ -28,12 +27,16 @@ void		min_square(int count_fig, int resize)
 	// Если в предыдущий минимальный квадрат не удалось заполнить фигурами, увеличиваем размер
 	if (resize == 1)
 		size++;
-	matrix = (char **)malloc(sizeof(char *) * (size + 1));
+	// Создаём указатели на начало строк в матрице (у)
+	if (!(matrix = (char**)malloc(sizeof(char*) * (size + 1))))
+		return (NULL);
 	j = 0;
+	// Создаём строки и заполняем их "."
 	while (j < size)
 	{
 		i = 0;
-		matrix[j] = (char *)malloc(sizeof(char) * (size + 1));
+		if (!(matrix[j] = (char*)malloc(sizeof(char) * (size + 1))))
+			return (NULL);
 		while (i < size)
 			matrix[j][i++] = '.';
 		matrix[j][i] = '\0';
@@ -41,13 +44,13 @@ void		min_square(int count_fig, int resize)
 		j++;
 	}
 	matrix[j] = 0;
-	return ;
+	return (matrix);
 }
 
 int		main()
 {
-	min_square(26, 0);
-	min_square(26, 1);
-	min_square(26, 1);
+	get_matrix(26, 0);
+	get_matrix(26, 1);
+	get_matrix(26, 1);
 	return (0);
 }
