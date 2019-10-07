@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:18:15 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/04 14:17:20 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/07 15:47:50 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int		check_file_content(char *str, int len, char *dest)
 	int		c_line;
 	int		c_hex;
 	int     c_dot;
+	int		c_ch;
 
 	i = 0;
 	c_line = 0;
 	c_hex = 0;
 	c_dot = 0;
+	c_ch = 0;
 
 	// Проверяет символ в прочитанном буфере на валидность
 	// нахождения '\n' в конце строки и между буферами, подсчёт '#' и '.'
@@ -42,11 +44,14 @@ int		check_file_content(char *str, int len, char *dest)
 			c_dot++;
 		else
 			break ;
+		if (str[i] == '#')
+			c_ch += (str[i - 1] == '#' ? 1 : 0) + (str[i + 1] == '#' ? 1 : 0) +
+				(str[i + 5] == '#' ? 1 : 0) + (str[i - 5] == '#' ? 1 : 0);
 		dest[i] = str[i];
-		if (c_line >= 3 && c_hex == 4 && c_dot == 12)
+		if (c_line >= 3 && c_hex == 4 && c_dot == 12 && (c_ch == 6 || c_ch == 8))
 		{
 			dest[len] = '\0';
-			return (1);
+			return (c_ch);
 		}
 		i++;
 	}
