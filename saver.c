@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:35:50 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 17:11:16 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/08 20:34:01 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,4 @@ t_tetra		save_figures(char *str, t_tetra *figure, int index)
 		i++;
 	}
 	return (*figure);
-}
-
-int			main(int argc, char **argv)
-{
-	int		i;
-	t_tetra	figures[26];
-	int		fd;
-	char	buf[BUFF_SIZE + 1];
-	int		len;
-	int		pt;
-
-	pt = 0;
-	fd = open(argv[argc - 1], O_RDONLY);
-	while ((len = read(fd, buf, BUFF_SIZE)) > 0 && pt < 26)
-	{
-		figures[pt] = save_figures(buf, &figures[pt], pt);
-		i = 0;
-		while (i < 3)
-		{
-			printf("%d %d\n", figures[pt].x[i], figures[pt].y[i]);
-			i++;
-		}
-		pt++;
-	}
-	return (0);
 }

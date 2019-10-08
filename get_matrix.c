@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 17:08:27 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/08 20:29:01 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,5 @@ char		*get_matrix(int count_fig, t_map *map)
 		j++;
 	}
 	map->matrix[j] = 0;
-	return (map->matrix);
-}
-
-int		main()
-{
-	get_matrix(26, 0);
-	get_matrix(26, 1);
-	get_matrix(26, 1);
-	return (0);
+	return (*map->matrix);
 }

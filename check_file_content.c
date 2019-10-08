@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:18:15 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 16:45:09 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/08 19:45:36 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // В файле должно быть до 26 матриц 4х4, в каждой 4-5 '\n', 4 '#', а остальное пространство занято 12 '.'
 // Записывает правильную фигуру в массив в виде строки
 // Возвращает 1 если условия выполнены
-int		check_file_content(char *str, int len, char *dest)
+int		check_file_content(char *str, int len)
 {
 	int		i;
 	int		c_line;
@@ -48,31 +48,8 @@ int		check_file_content(char *str, int len, char *dest)
 		if (str[i] == '#')
 			c_ch += (str[i - 1] == '#' ? 1 : 0) + (str[i + 1] == '#' ? 1 : 0) +
 				(str[i + 5] == '#' ? 1 : 0) + (str[i - 5] == '#' ? 1 : 0);
-		dest[i] = str[i];
 		if (c_line >= 3 && c_hex == 4 && c_dot == 12 && (c_ch == 6 || c_ch == 8))
-		{
-			dest[len] = '\0';
-			return (c_ch);
-		}
-		i++;
-	}
-	return (0);
-}
-
-int		main(int argc, char **argv)
-{
-	int		fd;
-	char	buf[BUFF_SIZE + 1];
-	char 	dest[26][BUFF_SIZE + 1];
-	int		i;
-	int		len;
-
-	i = 0;
-	fd = open(argv[argc - 1], O_RDONLY);
-	while((len = read(fd, buf, BUFF_SIZE)) > 0)
-	{
-		printf("%d\n", check_file_content(buf, len, dest[i]));
-		printf("%s\n", dest[i]);
+			return (1);
 		i++;
 	}
 	return (0);
