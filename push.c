@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoye <djoye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:39:16 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 16:18:28 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/08 17:07:38 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		push(int size, int x, int y, p_point *p, char **matrix, int fig_ind)
+int		push_figure(int x, int y, t_tetra *p, t_map *map)
 {
-	char	c;
-
-	c = fig_ind + 'A';
-	if ((x + p->x[0] >= 0 && y + p->y[0] >= 0 && x + p->x[0] <= size &&
-			y + p->y[0] <= size && matrix[y + p->y[0]][x + p->x[0]] == '.') &&
-			(x + p->x[1] >= 0 && y + p->y[1] >= 0 && x + p->x[1] <= size &&
-			y + p->y[1] <= size && matrix[y + p->y[1]][x + p->x[1]] == '.') &&
-			(x + p->x[2] >= 0 && y + p->y[2] >= 0 && x + p->x[2] <= size &&
-			 y + p->y[2] <= size && matrix[y + p->y[2]][x + p->x[2]] == '.'))
+	if ((x + p->x[0] >= 0 && y + p->y[0] >= 0 && x + p->x[0] <= map->size &&
+			y + p->y[0] <= map->size &&
+			map->matrix[y + p->y[0]][x + p->x[0]] == '.') &&
+			(x + p->x[1] >= 0 && y + p->y[1] >= 0 && x + p->x[1] <= map->size &&
+			y + p->y[1] <= map->size &&
+			map->matrix[y + p->y[1]][x + p->x[1]] == '.') &&
+			(x + p->x[2] >= 0 && y + p->y[2] >= 0 && x + p->x[2] <= map->size &&
+			 y + p->y[2] <= map->size &&
+			 map->matrix[y + p->y[2]][x + p->x[2]] == '.'))
 	{
-		matrix[y][x] = c;
-		matrix[y + p->y[0]][x + p->x[0]] = c;
-		matrix[y + p->y[1]][x + p->x[1]] = c;
-		matrix[y + p->y[2]][x + p->x[2]] = c;
+		map->matrix[y][x] = p->letter;
+		map->matrix[y + p->y[0]][x + p->x[0]] = p->letter;
+		map->matrix[y + p->y[1]][x + p->x[1]] = p->letter;
+		map->matrix[y + p->y[2]][x + p->x[2]] = p->letter;
 		return (1);
 	}
 	else return (0);
@@ -35,9 +35,8 @@ int		push(int size, int x, int y, p_point *p, char **matrix, int fig_ind)
 
 int main(void)
 {
-	p_point p;
-	int size = 4;
-	char **matrix;
+	t_tetra p;
+	t_map	map;
 	int j = 0;
 	int i = 0;
 
@@ -47,27 +46,28 @@ int main(void)
 	p.y[0] = 1;
 	p.y[1] = 1;
 	p.y[2] = 2;
-	matrix = (char**)malloc(sizeof(char*) * (size + 1));
-	while (j < size)
+	p.letter = 'A';
+	map.size = 4;
+	map.matrix = (char**)malloc(sizeof(char*) * (map.size + 1));
+	while (j < map.size)
 	{
 		i = 0;
-		if (!(matrix[j] = (char*)malloc(sizeof(char) * (size + 1))))
+		if (!(map.matrix[j] = (char*)malloc(sizeof(char) * (map.size + 1))))
 			return (1);
-		while (i < size)
+		while (i < map.size)
 		{
-			matrix[j][i] = '.';
+			map.matrix[j][i] = '.';
 			i++;
 		}
-		matrix[j][i] = '\0';
-	//	printf("%s\n", matrix[j]);
+		map.matrix[j][i] = '\0';
+	//	printf("%s\n", map.matrix[j]);
 		j++;
 	}
-	push(size, 0, 0, &p, matrix, 4);
-	push(size, 0, 0, &p, matrix, 4);
+	push(0, 0, &p, &map);
 	 j = 0;
-	 while (j < size)
+	 while (j < map.size)
 	 {
-		printf("%s\n", matrix[j]);
+		printf("%s\n", map.matrix[j]);
 		j++;
 	 }
 	 return (0);

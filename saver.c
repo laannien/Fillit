@@ -6,13 +6,14 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:35:50 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 14:49:19 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/08 17:11:16 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetra		saver(char *str, t_tetra *figure, int index)
+// Сохраняет фигуру в виде структуры (отступы х и у + буква)
+t_tetra		save_figures(char *str, t_tetra *figure, int index)
 {
 	int		i;
 	int		pos;
@@ -57,7 +58,7 @@ int			main(int argc, char **argv)
 	fd = open(argv[argc - 1], O_RDONLY);
 	while ((len = read(fd, buf, BUFF_SIZE)) > 0 && pt < 26)
 	{
-		figures[pt] = saver(buf, &figures[pt], pt);
+		figures[pt] = save_figures(buf, &figures[pt], pt);
 		i = 0;
 		while (i < 3)
 		{

@@ -6,15 +6,14 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 14:57:03 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/08 17:08:27 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 // Определяет размер минимального квадрата, в который помещаются фигуры
-// ? Возможно написать алгоритм без статической переменной ?
-t_map		get_matrix(int count_fig, t_map *map)
+char		*get_matrix(int count_fig, t_map *map)
 {
 	int			i;
 	int			j;
@@ -23,8 +22,8 @@ t_map		get_matrix(int count_fig, t_map *map)
 	if (!(map->size))
 	{
 		map->size = 2;
-		while (count_fig * 4 > size * size)
-			size++;		
+		while (count_fig * 4 > map->size * map->size)
+			map->size++;		
 	}
 	else
 		map->size++;
@@ -36,16 +35,19 @@ t_map		get_matrix(int count_fig, t_map *map)
 	while (j < map->size)
 	{
 		i = 0;
-		if (!(map->matrix[j] = (char*)malloc(sizeof(char) * (size + 1))))
+		if (!(map->matrix[j] = (char*)malloc(sizeof(char) * (map->size + 1))))
 			return (NULL);
 		while (i < map->size)
-			map->matrix[j][i++] = '.';
+		{
+			map->matrix[j][i] = '.';
+			i++;
+		}
 		map->matrix[j][i] = '\0';
 		printf("%s\n", map->matrix[j]);
 		j++;
 	}
-	matrix[j] = 0;
-	return (matrix);
+	map->matrix[j] = 0;
+	return (map->matrix);
 }
 
 int		main()
