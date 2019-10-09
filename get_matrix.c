@@ -6,13 +6,13 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 16:53:19 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/09 17:56:32 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	**fill_matrix(t_map *map)
+static char	fill_matrix(t_map *map)
 {
 	int i;
 	int j;
@@ -35,11 +35,8 @@ static char	**fill_matrix(t_map *map)
 	return (map->matrix);
 }
 
-t_map		*get_matrix(int count_fig, t_map *map)
+t_map		*get_matrix(int count_fig, t_tetra *p, t_map *map)
 {
-	int			i;
-	int			j;
-
 	if (!(map->size))
 	{
 		map->size = 2;
@@ -52,5 +49,6 @@ t_map		*get_matrix(int count_fig, t_map *map)
 		return (NULL);
 	if (!(map->matrix = fill_matrix(map)))
 		return (NULL);
+	map = algo(count_fig, p, map);
 	return (map);
 }
