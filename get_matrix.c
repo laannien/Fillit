@@ -6,32 +6,18 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 14:24:35 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:53:19 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-// Определяет размер минимального квадрата, в который помещаются фигуры
-t_map		*get_matrix(int count_fig, t_map *map)
+static char	**fill_matrix(t_map *map)
 {
-	int			i;
-	int			j;
-	
-	// Ищет минимальный квадрат в зав от количества заполненных фигурами ячеек
-	if (!(map->size))
-	{
-		map->size = 2;
-		while (count_fig * 4 > map->size * map->size)
-			map->size++;		
-	}
-	else
-		map->size++;
-	// Создаём указатели на начало строк в матрице (у)
-	if (!(map->matrix = (char**)malloc(sizeof(char*) * (map->size + 1))))
-		return (NULL);
+	int i;
+	int j;
+
 	j = 0;
-	// Создаём строки и заполняем их "."
 	while (j < map->size)
 	{
 		i = 0;
@@ -46,5 +32,25 @@ t_map		*get_matrix(int count_fig, t_map *map)
 		j++;
 	}
 	map->matrix[j] = 0;
+	return (map->matrix);
+}
+
+t_map		*get_matrix(int count_fig, t_map *map)
+{
+	int			i;
+	int			j;
+
+	if (!(map->size))
+	{
+		map->size = 2;
+		while (count_fig * 4 > map->size * map->size)
+			map->size++;
+	}
+	else
+		map->size++;
+	if (!(map->matrix = (char**)malloc(sizeof(char*) * (map->size + 1))))
+		return (NULL);
+	if (!(map->matrix = fill_matrix(map)))
+		return (NULL);
 	return (map);
 }

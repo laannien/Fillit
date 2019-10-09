@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:39:16 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 14:50:10 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:54:55 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		push_figure(int x, int y, t_tetra *p, t_map *map)
 			y + p->y[1] < map->size &&
 			map->matrix[y + p->y[1]][x + p->x[1]] == '.') &&
 			(x + p->x[2] >= 0 && y + p->y[2] >= 0 && x + p->x[2] < map->size &&
-			 y + p->y[2] < map->size &&
-			 map->matrix[y + p->y[2]][x + p->x[2]] == '.'))
+			y + p->y[2] < map->size &&
+			map->matrix[y + p->y[2]][x + p->x[2]] == '.'))
 	{
 		map->matrix[y][x] = p->letter;
 		map->matrix[y + p->y[0]][x + p->x[0]] = p->letter;
@@ -30,7 +30,7 @@ int		push_figure(int x, int y, t_tetra *p, t_map *map)
 		map->matrix[y + p->y[2]][x + p->x[2]] = p->letter;
 		return (1);
 	}
-	else return (0);
+	return (0);
 }
 
 /*int main(void)
