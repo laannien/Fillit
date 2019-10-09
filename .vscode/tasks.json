@@ -1,0 +1,32 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558 
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "clang build active file",
+			"command": "/usr/bin/clang",
+			"args": [
+				"-g",
+				"-Wall",
+				"-Wextra",
+				"-Werror",
+				"${fileDirname}/algo.c",
+				"${fileDirname}/check_file_content.c",
+				"${fileDirname}/get_matrix.c",
+				"${fileDirname}/main.c",
+				"${fileDirname}/push.c",
+				"${fileDirname}/saver.c",
+				"-o",
+				"${fileDirname}/fillit"
+			],
+			"options": {
+				"cwd": "/usr/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			]
+		}
+	]
+}

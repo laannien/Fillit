@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vpixator.c                                      :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoye <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:47 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 12:59:17 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 14:42:26 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		algo(int	count_fig, t_tetra *p, t_map *map)
+t_map		*algo(int	count_fig, t_tetra *p, t_map *map)
 {
 	int		x;
 	int		y;
@@ -27,7 +27,7 @@ int		algo(int	count_fig, t_tetra *p, t_map *map)
 	while (ind_fig >= 0)
 	{
 		push_fig = 0;
-		if (y_mem != 0)
+		if (y_mem != 0) //???
 		{
 			y = y_mem;
 			y_mem = 0;						
@@ -35,9 +35,9 @@ int		algo(int	count_fig, t_tetra *p, t_map *map)
 		else	y = 0;
 		while (y < map->size)
 		{
-			if (x_mem != 0)
+			if (x_mem != 0) //???
 			{
-				x = x_mem + 1;
+				x = x_mem;
 				x_mem = 0;
 			}	
 			else	x = 0;
@@ -52,7 +52,7 @@ int		algo(int	count_fig, t_tetra *p, t_map *map)
 						y_mem = y;
 						push_fig++;
 						if (push_fig == count_fig)
-							return (1);
+							return (map);
 						ind_fig++;
 					}
 				}
@@ -64,5 +64,5 @@ int		algo(int	count_fig, t_tetra *p, t_map *map)
 		ind_fig--;
 	}
 	get_matrix(count_fig, map);
-	return (0);
+	return (NULL);
 }

@@ -6,14 +6,14 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 13:20:57 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 14:24:35 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 // Определяет размер минимального квадрата, в который помещаются фигуры
-char		*get_matrix(int count_fig, t_map *map)
+t_map		*get_matrix(int count_fig, t_map *map)
 {
 	int			i;
 	int			j;
@@ -46,5 +46,5 @@ char		*get_matrix(int count_fig, t_map *map)
 		j++;
 	}
 	map->matrix[j] = 0;
-	return (*map->matrix);
+	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 13:01:35 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 14:21:19 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct	s_map
 int				check_file_content(char *str, int len);
 int				push_figure(int x, int y, t_tetra *p, t_map *map);
 t_tetra			save_figures(char *str, t_tetra *figure, int index);
-char        	*get_matrix(int count_fig, t_map *map);
-int				algo(int	count_fig, t_tetra *p, t_map *map);
+t_map        	*get_matrix(int count_fig, t_map *map);
+t_map			*algo(int	count_fig, t_tetra *p, t_map *map);
 
 #endif
