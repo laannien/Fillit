@@ -6,7 +6,7 @@
 /*   By: djoye <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 12:00:18 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 13:21:53 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			main(int argc, char **argv)
 	t_tetra	figures[26];
 	int		pt;
 	int		f; //check fig
-	t_tetra p;
+//	t_tetra p;
 	t_map	map;
 
     i = 0;
@@ -48,7 +48,7 @@ int			main(int argc, char **argv)
 		f++;
 	}
 	get_matrix(i, &map);
-	algo(i, &p, &map);
+//	algo(i, &p, &map);
 	f = 0;
 	while (f < map.size)
 	{

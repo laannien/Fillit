@@ -6,7 +6,7 @@
 /*   By: djoye <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:47 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 11:36:39 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 12:59:17 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int		algo(int	count_fig, t_tetra *p, t_map *map)
 	int		y;
 	int		x_mem;
 	int		y_mem;
-	int		num_fig;
+	int		ind_fig;
 	int 	push_fig;
 
 	x_mem = 0;
 	y_mem = 0;
-	num_fig = 0;
-	while (num_fig >= 0)
+	ind_fig = 0;
+	while (ind_fig >= 0)
 	{
 		push_fig = 0;
 		if (y_mem != 0)
@@ -45,22 +45,23 @@ int		algo(int	count_fig, t_tetra *p, t_map *map)
 			{
 				if (map->matrix[y][x] == '.')
 				{	
-					if (push_figure(x, y, &p[num_fig], map))
+					printf("%d", x);
+					if (push_figure(x, y, &p[ind_fig], map))
 					{
 						x_mem = x;
 						y_mem = y;
 						push_fig++;
 						if (push_fig == count_fig)
 							return (1);
-						num_fig++;
+						ind_fig++;
 					}
 				}
 				x++;
 			}
 			y++;
 		}
-		//delete figure
-		num_fig--;
+//delete figure
+		ind_fig--;
 	}
 	get_matrix(count_fig, map);
 	return (0);

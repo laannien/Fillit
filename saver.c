@@ -6,13 +6,13 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:35:50 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 20:34:01 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 13:16:29 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-// Сохраняет фигуру в виде структуры (отступы х и у + буква)
+/* Сохраняет фигуру в виде структуры (отступы х и у + буква) */
 t_tetra		save_figures(char *str, t_tetra *figure, int index)
 {
 	int		i;
@@ -39,7 +39,6 @@ t_tetra		save_figures(char *str, t_tetra *figure, int index)
 			figure->letter = index + 'A';
 			break ;
 		}
-		
 		i++;
 	}
 	return (*figure);
