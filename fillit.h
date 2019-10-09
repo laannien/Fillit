@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 20:07:51 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 11:00:54 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,22 @@
 // Структура для храниния фигуры в виде координат или отступов
 typedef struct	s_tetra
 {
-	char	letter;
-	int 	x[3];
-	int 	y[3];
+	char		letter;
+	int 		x[3];
+	int 		y[3];
 }				t_tetra;
 
 // Структура для хранения матрицы карты и её размера
 typedef struct	s_map
 {
-	int		size;
-	char	**matrix;
+	int			size;
+	char		**matrix;
 }				t_map;
 
-int		check_file_content(char *str, int len);
-//t_tetra		save_figures(char *str, t_tetra *figure, int index);
-int		push_figure(int x, int y, t_tetra *p, t_map *map);
-t_tetra		save_figures(char *str, t_tetra *figure, int index);
-char        *get_matrix(int count_fig, t_map *map);
-
+int				check_file_content(char *str, int len);
+int				push_figure(int x, int y, t_tetra *p, t_map *map);
+t_tetra			save_figures(char *str, t_tetra *figure, int index);
+char        	*get_matrix(int count_fig, t_map *map);
+int				algo(int	count_fig, t_tetra *p, t_map *map);
 
 #endif

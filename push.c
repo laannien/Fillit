@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:39:16 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/08 17:07:38 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/09 11:12:19 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		push_figure(int x, int y, t_tetra *p, t_map *map)
 	else return (0);
 }
 
-int main(void)
+/*int main(void)
 {
 	t_tetra p;
 	t_map	map;
@@ -63,7 +63,7 @@ int main(void)
 	//	printf("%s\n", map.matrix[j]);
 		j++;
 	}
-	push(0, 0, &p, &map);
+	push_figure(0, 0, &p, &map);
 	 j = 0;
 	 while (j < map.size)
 	 {
@@ -72,3 +72,4 @@ int main(void)
 	 }
 	 return (0);
 }
+*/

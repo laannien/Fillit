@@ -6,33 +6,34 @@
 /*   By: djoye <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:47 by djoye             #+#    #+#             */
-/*   Updated: 2019/09/27 20:39:02 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/09 11:36:39 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		algo(int	count_fig, int matrix_size, char ***arr, char **map)
+int		algo(int	count_fig, t_tetra *p, t_map *map)
 {
 	int		x;
 	int		y;
 	int		x_mem;
 	int		y_mem;
 	int		num_fig;
-	count	vpix;
+	int 	push_fig;
 
 	x_mem = 0;
 	y_mem = 0;
+	num_fig = 0;
 	while (num_fig >= 0)
 	{
-		vpix = 0;
+		push_fig = 0;
 		if (y_mem != 0)
 		{
 			y = y_mem;
 			y_mem = 0;						
 		}
 		else	y = 0;
-		while (y < matrix_size)
+		while (y < map->size)
 		{
 			if (x_mem != 0)
 			{
@@ -40,16 +41,16 @@ int		algo(int	count_fig, int matrix_size, char ***arr, char **map)
 				x_mem = 0;
 			}	
 			else	x = 0;
-			while (x < matrix_size)
+			while (x < map->size)
 			{
-				if (map[y][x] == '.')
+				if (map->matrix[y][x] == '.')
 				{	
-					if (ft_vpixator (num_fig, map, x, y))
+					if (push_figure(x, y, &p[num_fig], map))
 					{
 						x_mem = x;
 						y_mem = y;
-						vpix++;
-						if (vpix == count_fig)
+						push_fig++;
+						if (push_fig == count_fig)
 							return (1);
 						num_fig++;
 					}
@@ -58,8 +59,9 @@ int		algo(int	count_fig, int matrix_size, char ***arr, char **map)
 			}
 			y++;
 		}
+		//delete figure
 		num_fig--;
 	}
-	matrix (count_fig, 1);
+	get_matrix(count_fig, map);
 	return (0);
 }
