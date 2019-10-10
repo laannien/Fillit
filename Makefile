@@ -6,13 +6,13 @@
 #    By: djoye <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 11:32:41 by djoye             #+#    #+#              #
-#    Updated: 2019/10/09 11:58:31 by djoye            ###   ########.fr        #
+#    Updated: 2019/10/10 14:41:41 by djoye            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = algo.c check_file_content.c get_matrix.c main.c push.c saver.c
+SRC = check_file_content.c get_matrix.c main.c saver.c fillit.c #push.c# #algo.c#
 
 OBJ = $(SRC:.c=.o)
 

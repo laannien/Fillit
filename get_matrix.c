@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 12:20:31 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/10 14:50:25 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ t_map		*get_matrix(int count_fig, t_tetra *p, t_map *map)
 		return (NULL);
 	if (!(map->matrix = fill_matrix(map)))
 		return (NULL);
-	map = algo(count_fig, p, map);
+	*map = fillit(count_fig, 0, 0, &p[0], map);
 	return (map);
 }

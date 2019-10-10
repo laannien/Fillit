@@ -6,36 +6,59 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:47 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 14:29:43 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/10 12:35:00 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_map	*algo(int count_fig, t_tetra *p, t_map *map)
+t_map		*algo(int	count_fig, t_tetra *p, t_map *map)
 {
-	int x;
-	int y;
-	int ind_fig;
+	int		x;
+	int		y;
+//	int		x_mem;
+//	int		y_mem;
+	int		ind_fig;
+	int 	push_fig;
 
+//	x_mem = 0;
+//	y_mem = 0;
 	ind_fig = 0;
-	y = 0;
-	while (y < map->size)
+	while (ind_fig >= 0)
 	{
-		x = 0;
-		while (x < map->size)
+		push_fig = 0;
+//		if (y_mem != 0) //???
+//		{
+//			y = y_mem;
+//			y_mem = 0;						
+//		}
+		y = 0;
+		while (y < map->size)
 		{
-			if (map->matrix[y][x] == '.' && push_figure(x, y, &p[ind_fig], map))
+//			if (x_mem != 0) //???  //			{
+//				x = x_mem;
+//				x_mem = 0;
+//			}	
+			x = 0;
+			while (x < map->size)
 			{
-				if (++ind_fig == count_fig)
-					return (map);
-				x = 0;
-				y = 0;
+				if (map->matrix[y][x] == '.' && push_figure(x, y, &p[ind_fig], map))
+				{
+					x = 0;
+					y = 0;
+					push_fig++;
+					if (push_fig == count_fig)
+						return (map);
+					ind_fig++;
+				}
+				x++;
 			}
-			x++;
+			y++;
 		}
-		y++;
+//delete figure		
+		ind_fig--;
 	}
-	get_matrix(count_fig, p, map);
+//	if (x == map->size - 1 && y == map->size - 1 && ind_fig == -1)
+		get_matrix(count_fig, p, map);
 	return (map);
 }
