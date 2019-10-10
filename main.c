@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 14:52:34 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/10 12:20:35 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			main(int argc, char **argv)
 {
-    int		fd;
+	int		fd;
     char	buf[BUFF_SIZE + 1];
     int		i;
     int		len;
@@ -25,17 +25,19 @@ int			main(int argc, char **argv)
 	t_map	*map;
 
     i = 0;
-    fd = open(argv[argc - 1], O_RDONLY);
-    while((len = read(fd, buf, BUFF_SIZE)) > 0 && i < 26)
+	fd = open(argv[1], O_RDONLY);
+    while((len = read(fd, buf, BUFF_SIZE)) > 0)
     {
-		if (check_file_content(buf, len))
-		{
-			buf[len] = '\0';
+		buf[len] = '\0';
+		if (check_file_content(buf, len) && i <= 26 && argc == 2)
 			figures[i] = save_figures(buf, &figures[i], i);
-			i++;
+		else
+		{	
+			write(1, "error\n", 6);
+			return (0);
 		}
-//		else	return (0);
-    }
+		i++;
+	}
 	// f = 0;
 	// while (f < i)
 	// {
@@ -48,8 +50,7 @@ int			main(int argc, char **argv)
 	// 	f++;
 	// }
 	map = (t_map*)malloc(sizeof(t_map));
-	map = get_matrix(i, map);
-	algo(i, figures, map);
+	map = get_matrix(i, figures, map);
 	f = 0;
 	while (f < map->size)
 	{

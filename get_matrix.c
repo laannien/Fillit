@@ -6,13 +6,13 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 17:56:32 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/10 12:20:31 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	fill_matrix(t_map *map)
+static char	**fill_matrix(t_map *map)
 {
 	int i;
 	int j;
