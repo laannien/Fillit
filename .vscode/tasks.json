@@ -12,7 +12,7 @@
 				"-Wall",
 				"-Wextra",
 				"-Werror",
-				"${fileDirname}/algo.c",
+				"${fileDirname}/fillit.c",
 				"${fileDirname}/check_file_content.c",
 				"${fileDirname}/get_matrix.c",
 				"${fileDirname}/main.c",

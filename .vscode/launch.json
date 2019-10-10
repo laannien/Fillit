@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${fileDirname}/fillit",
 			"args": [
-				"test"
+				"test3"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",

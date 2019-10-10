@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 12:20:31 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/10 17:55:05 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	**fill_matrix(t_map *map)
 	return (map->matrix);
 }
 
-t_map		*get_matrix(int count_fig, t_tetra *p, t_map *map)
+t_map		*get_matrix(int count_fig, t_map *map)
 {
 	if (!(map->size))
 	{
@@ -49,6 +49,5 @@ t_map		*get_matrix(int count_fig, t_tetra *p, t_map *map)
 		return (NULL);
 	if (!(map->matrix = fill_matrix(map)))
 		return (NULL);
-	map = algo(count_fig, p, map);
 	return (map);
 }

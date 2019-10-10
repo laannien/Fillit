@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 12:20:35 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/10 17:54:39 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int			main(int argc, char **argv)
     int		i;
     int		len;
 	t_tetra	figures[26];
-	// int		pt;
-	int		f; //check fig
-//	t_tetra p;
 	t_map	*map;
 
     i = 0;
@@ -29,7 +26,7 @@ int			main(int argc, char **argv)
     while((len = read(fd, buf, BUFF_SIZE)) > 0)
     {
 		buf[len] = '\0';
-		if (check_file_content(buf, len) && i <= 26 && argc == 2)
+		if (check_file_content(buf, len) && i < 26 && argc == 2)
 			figures[i] = save_figures(buf, &figures[i], i);
 		else
 		{	
@@ -38,24 +35,14 @@ int			main(int argc, char **argv)
 		}
 		i++;
 	}
-	// f = 0;
-	// while (f < i)
-	// {
-	// 	pt = 0;
-	// 	while (pt < 3)
-	// 	{
-	// 		printf("%d %d\n", figures[f].x[pt], figures[f].y[pt]);
-	// 		pt++;
-	// 	}
-	// 	f++;
-	// }
 	map = (t_map*)malloc(sizeof(t_map));
-	map = get_matrix(i, figures, map);
-	f = 0;
-	while (f < map->size)
+	map = get_matrix(i, map);
+	map = fillit(i, 0, 0, figures, map);
+	i = 0;
+	while (i < map->size)
 	{
-		printf("%s\n", map->matrix[f]);
-		f++;
+		printf("%s\n", map->matrix[i]);
+		i++;
 	}
 	return (0);
 }
