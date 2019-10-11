@@ -6,17 +6,21 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 12:23:53 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/11 14:15:05 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	**fill_matrix(t_map *map)
+t_map		*get_matrix(int resize, t_map *map)
 {
 	int i;
 	int j;
 
+	if (resize == 1)
+		map->size++;
+	if (!(map->matrix = (char**)malloc(sizeof(char*) * (map->size + 1))))
+		return (NULL);
 	j = 0;
 	while (j < map->size)
 	{
@@ -32,21 +36,5 @@ static char	**fill_matrix(t_map *map)
 		j++;
 	}
 	map->matrix[j] = 0;
-	return (map->matrix);
-}
-
-t_map		*get_matrix(int count_fig, t_map *map)
-{
-	if (!(map->size))
-	{
-		map->size = 2;
-		while (count_fig * 4 > map->size * map->size)
-			map->size++;
-	}
-		else map->size++;
-	if (!(map->matrix = (char**)malloc(sizeof(char*) * (map->size + 1))))
-		return (NULL);
-	if (!(map->matrix = fill_matrix(map)))
-		return (NULL);
 	return (map);
 }

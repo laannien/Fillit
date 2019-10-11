@@ -6,11 +6,21 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 13:22:14 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/11 14:14:38 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int			get_min_size(int count_fig)
+{
+	int size;
+
+	size = 2;
+	while (count_fig * 4 > size * size)
+		size++;
+	return (size);
+}
 
 int			main(int argc, char **argv)
 {
@@ -36,7 +46,8 @@ int			main(int argc, char **argv)
 	if (prev_len != 20 && write(1, "error\n", 6))
 		return (0);
 //	map = (t_map*)malloc(sizeof(t_map));
-	map = *get_matrix(i, &map);
+	map.size = get_min_size(i);
+	map = *get_matrix(0, &map);
 	map = *fillit(i, 0, 0, figures, &map);
 	i = -1;
 	while (++i < map.size && write(1, map.matrix[i], map.size))

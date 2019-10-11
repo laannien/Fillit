@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoye <djoye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 13:04:14 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 20:45:11 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/11 14:16:09 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_map		*fillit(int count_fig, int x, int y, t_tetra *p, t_map *map)
+t_map		*fillit(int x, int y, t_tetra *p, t_map *map)
 {
 	int		i;
 	int		l;
@@ -32,13 +32,13 @@ t_map		*fillit(int count_fig, int x, int y, t_tetra *p, t_map *map)
 			l++;
 		}
 		printf("\n");
-		c_map = fillit(count_fig, 0, 0, &p[i], map);
+		c_map = fillit(0, 0, &p[i], map);
 	}
 	if (x <= (map->size - 2))
-		c_map = fillit(count_fig, x + 1, y, &p[i], map);
+		c_map = fillit(x + 1, y, &p[i], map);
 	else if (x == (map->size - 1) && y <= (map->size - 2))
-		c_map = fillit(count_fig, 0, y + 1, &p[i], map);
-//	if (i != count_fig)
-//		get_matrix(count_fig, p, map);
+		c_map = fillit(0, y + 1, &p[i], map);
+	if (i == 0)
+		c_map = fillit(0, 0, p, get_matrix(1, map));
 	return (c_map);
 }
