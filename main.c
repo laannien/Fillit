@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 14:14:38 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/11 14:20:00 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			main(int argc, char **argv)
 //	map = (t_map*)malloc(sizeof(t_map));
 	map.size = get_min_size(i);
 	map = *get_matrix(0, &map);
-	map = *fillit(i, 0, 0, figures, &map);
+	map = *fillit(0, 0, figures, &map);
 	i = -1;
 	while (++i < map.size && write(1, map.matrix[i], map.size))
 		write(1, "\n", 1);
