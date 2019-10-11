@@ -6,13 +6,13 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:18:15 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 16:27:31 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/11 11:51:39 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		check_file_content(char *str, int len)
+int		check_file(char *str, int len)
 {
 	int i;
 	int c_line;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djoye <djoye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 17:54:59 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/11 11:35:12 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ typedef struct	s_map
 	char		**matrix;
 }				t_map;
 
-int				check_file_content(char *str, int len);
+int				check_file(char *str, int len);
 int				push_figure(int x, int y, t_tetra *p, t_map *map);
-t_tetra			save_figures(char *str, t_tetra *figure, int index);
+t_tetra			save_figures(char *str, t_tetra *figure, int index, int len);
 t_map			*get_matrix(int count_fig, t_map *map);
 //t_map			*algo(int count_fig, t_tetra *p, t_map *map);
 t_map			*fillit(int count_fig, int x, int y, t_tetra *p, t_map *map);

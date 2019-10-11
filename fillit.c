@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djoye <djoye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 13:04:14 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 18:55:35 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:45:11 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ t_map		*fillit(int count_fig, int x, int y, t_tetra *p, t_map *map)
 
 	i = 0;
 	c_map = map;
+	if (&p[i] == 0)
+			return (c_map);
 	if (map->matrix[y][x] == '.' && push_figure(x, y, &p[i], map))
 	{
 		i++;
-		if (&p[i] == 0)
-			return (c_map);
 		l = 0;
 		while (l < map->size)
 		{

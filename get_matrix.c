@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 20:54:28 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/10 17:55:05 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/11 12:23:53 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ t_map		*get_matrix(int count_fig, t_map *map)
 		while (count_fig * 4 > map->size * map->size)
 			map->size++;
 	}
-	else
-		map->size++;
+		else map->size++;
 	if (!(map->matrix = (char**)malloc(sizeof(char*) * (map->size + 1))))
 		return (NULL);
 	if (!(map->matrix = fill_matrix(map)))

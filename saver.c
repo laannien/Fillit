@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   saver.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djoye <djoye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:35:50 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 17:11:36 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/11 11:51:25 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetra	save_figures(char *str, t_tetra *figure, int index)
+t_tetra	save_figures(char *str, t_tetra *figure, int index, int len)
 {
 	int		i;
 	int		pos;
@@ -20,7 +20,7 @@ t_tetra	save_figures(char *str, t_tetra *figure, int index)
 
 	i = 0;
 	pt = -1;
-	while (str[i] != '\0')
+	while (i < len)
 	{
 		if (str[i] == '#')
 		{
