@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 12:41:13 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/11 13:15:48 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			main(int argc, char **argv)
 	t_map	map;
 
 	if ((argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0
-			|| read(fd, NULL, BUFF_SIZE) == 0) && write(1, "error\n", 6))
+			|| read(fd, NULL, 0) == -1) && write(1, "error\n", 6))
 		return (0);
 	i = -1;
 	while ((len = read(fd, buf, BUFF_SIZE)) > 0)
