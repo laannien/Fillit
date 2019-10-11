@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 14:16:30 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/11 22:06:12 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int				push_figure(int x, int y, t_tetra *p, t_map *map);
 t_tetra			save_figures(char *str, t_tetra *figure, int index, int len);
 t_map			*get_matrix(int resize, t_map *map);
 //t_map			*algo(int count_fig, t_tetra *p, t_map *map);
-t_map			*fillit(int x, int y, t_tetra *p, t_map *map);
+int			fillit(int count_fig, t_tetra *p, t_map *map);
 
 #endif
