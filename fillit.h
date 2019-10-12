@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 22:06:12 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/12 16:44:41 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 typedef struct	s_tetra
 {
-	char	letter;
-	int		x[3];
-	int		y[3];
+	char		letter;
+	int			x[3];
+	int			y[3];
 }				t_tetra;
 
 typedef struct	s_map
@@ -37,11 +37,10 @@ typedef struct	s_map
 	char		**matrix;
 }				t_map;
 
-int				check_file(char *str, int len);
-int				push_figure(int x, int y, t_tetra *p, t_map *map);
+int				check(char *str, int len);
 t_tetra			save_figures(char *str, t_tetra *figure, int index, int len);
 t_map			*get_matrix(int resize, t_map *map);
-//t_map			*algo(int count_fig, t_tetra *p, t_map *map);
-int			fillit(int count_fig, t_tetra *p, t_map *map);
+int				fillit(int count_fig, t_tetra *p, t_map *map);
+int				push_figure(int x, int y, t_tetra *p, t_map *map);
 
 #endif

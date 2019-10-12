@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 13:04:14 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 22:12:21 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/12 18:17:14 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			fillit(int count_fig, t_tetra *p, t_map *map)
 		{
 			if (map->matrix[y][x] == '.' && push_figure(x, y, p, map))
 			{
-				if (--p && fillit(--count_fig, p, map))
+				if (fillit(--count_fig, --p, map) && p)
 					return (1);
 				if (++count_fig == 0)
 					return (1);
