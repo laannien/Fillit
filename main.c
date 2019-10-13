@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/12 18:17:36 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/13 14:39:04 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,28 @@ int			get_min_size(int count_fig)
 	return (size);
 }
 
+static void	*ft_memalloc(size_t size)
+{
+	size_t	i;
+	void	*s;
+
+	i = 0;
+	s = (char*)malloc(sizeof(char) * size);
+	if (s == NULL)
+		return (NULL);
+	while (i < size)
+	{
+		((char*)s)[i] = 0;
+		i++;
+	}
+	return (s);
+}
+
 int			main(int argc, char **argv)
 {
 	int		fd;
 	char	buf[BUFF_SIZE + 1];
-	t_tetra	figures[26];
+	t_tetra	*figures;
 	int		i;
 	int		len;
 	int		p_len;
@@ -36,6 +53,7 @@ int			main(int argc, char **argv)
 			|| read(fd, NULL, 0) == -1) && write(1, "usage\n", 6))
 		return (0);
 	i = -1;
+	figures = ft_memalloc((sizeof(t_tetra) * 26));
 	while ((len = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		if ((++i >= 26 || !(check(buf, p_len = len))) && write(1, "error\n", 6))
@@ -46,7 +64,7 @@ int			main(int argc, char **argv)
 		return (0);
 	map.size = get_min_size(i);
 	map = *get_matrix(0, &map);
-	while (!fillit(i, &figures[i], &map))
+	while (!fillit(i, &figures[0], &map))
 		get_matrix(1, &map);
 	i = -1;
 	while (++i < map.size && write(1, map.matrix[i], map.size))
