@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/13 14:39:04 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/13 14:53:05 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,12 @@ int			get_min_size(int count_fig)
 
 static void	*ft_memalloc(size_t size)
 {
-	size_t	i;
 	void	*s;
 
-	i = 0;
-	s = (char*)malloc(sizeof(char) * size);
-	if (s == NULL)
+	if(!(s = (char*)malloc(sizeof(char) * size)))
 		return (NULL);
-	while (i < size)
-	{
-		((char*)s)[i] = 0;
-		i++;
-	}
+	while (--size)
+		((char*)s)[size] = 0;
 	return (s);
 }
 
