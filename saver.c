@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   saver.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoye <djoye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:35:50 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 11:51:25 by djoye            ###   ########.fr       */
+/*   Updated: 2019/10/14 13:26:32 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetra	save_figures(char *str, t_tetra *figure, int index, int len)
+t_tetra	*save_figure(char *str, t_tetra *ptr, int index, int len)
 {
 	int		i;
 	int		pos;
 	int		pt;
+	t_tetra	*figure;
 
 	i = 0;
 	pt = -1;
+	if (!(figure = (t_tetra*)malloc(sizeof(t_tetra))))
+		return (NULL);
 	while (i < len)
 	{
 		if (str[i] == '#')
@@ -38,5 +41,7 @@ t_tetra	save_figures(char *str, t_tetra *figure, int index, int len)
 		i++;
 	}
 	figure->letter = index + 'A';
-	return (*figure);
+	figure->next = NULL;
+	figure->prev = ptr;
+	return (figure);
 }

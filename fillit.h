@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/11 14:16:30 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:01:00 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILLIT_H
 
 # define BUFF_SIZE 21
+# define MAX_TETRA 26
 
 # include <string.h>
 # include <ctype.h>
@@ -26,9 +27,11 @@
 
 typedef struct	s_tetra
 {
-	char	letter;
-	int		x[3];
-	int		y[3];
+	char			letter;
+	int				x[3];
+	int				y[3];
+	struct s_tetra	*next;
+	struct s_tetra	*prev;
 }				t_tetra;
 
 typedef struct	s_map
@@ -37,11 +40,10 @@ typedef struct	s_map
 	char		**matrix;
 }				t_map;
 
-int				check_file(char *str, int len);
-int				push_figure(int x, int y, t_tetra *p, t_map *map);
-t_tetra			save_figures(char *str, t_tetra *figure, int index, int len);
+int				check(char *str, int len);
+t_tetra			*save_figure(char *str, t_tetra *ptr, int index, int len);
 t_map			*get_matrix(int resize, t_map *map);
-//t_map			*algo(int count_fig, t_tetra *p, t_map *map);
-t_map			*fillit(int x, int y, t_tetra *p, t_map *map);
+int				fillit(int count_fig, t_tetra *p, t_map *map);
+int				push_figure(int x, int y, t_tetra *p, t_map *map);
 
 #endif

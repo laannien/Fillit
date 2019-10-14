@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:39:16 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/09 16:54:55 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/12 16:32:19 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,44 +32,3 @@ int		push_figure(int x, int y, t_tetra *p, t_map *map)
 	}
 	return (0);
 }
-
-/*int main(void)
-{
-	t_tetra p;
-	t_map	map;
-	int j = 0;
-	int i = 0;
-
-	p.x[0] = 0;
-	p.x[1] = 1;
-	p.x[2] = 0;
-	p.y[0] = 1;
-	p.y[1] = 1;
-	p.y[2] = 2;
-	p.letter = 'A';
-	map.size = 4;
-	map.matrix = (char**)malloc(sizeof(char*) * (map.size + 1));
-	while (j < map.size)
-	{
-		i = 0;
-		if (!(map.matrix[j] = (char*)malloc(sizeof(char) * (map.size + 1))))
-			return (1);
-		while (i < map.size)
-		{
-			map.matrix[j][i] = '.';
-			i++;
-		}
-		map.matrix[j][i] = '\0';
-	//	printf("%s\n", map.matrix[j]);
-		j++;
-	}
-	push_figure(0, 0, &p, &map);
-	 j = 0;
-	 while (j < map.size)
-	 {
-		printf("%s\n", map.matrix[j]);
-		j++;
-	 }
-	 return (0);
-}
-*/
