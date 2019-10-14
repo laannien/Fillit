@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 15:01:10 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:18:40 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,12 @@ static t_tetra	*read_file(int fd)
 	t_tetra	*figure;
 	int		i;
 
-	i = -1;
+	i = 0;
 	while ((len = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		if ((i >= MAX_TETRA || !(check_file_content(buf, len))) &&
-		write(1, "error\n", 6))
+			write(1, "error\n", 6))
 			return (NULL);
-		p_len = len;
-		i++;
 		if (!figure)
 			figure = save_figure(buf, NULL, i, len);
 		else
@@ -45,6 +43,8 @@ static t_tetra	*read_file(int fd)
 			figure->next = save_figure(buf, figure, i, len);
 			figure = figure->next;
 		}
+		p_len = len;
+		i++;
 	}
 	if (p_len != 20 && write(1, "error\n", 6))
 		return (NULL);

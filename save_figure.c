@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:35:50 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 13:26:32 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:26:17 by djoye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,21 @@ t_tetra	*save_figure(char *str, t_tetra *ptr, int index, int len)
 	int		pt;
 	t_tetra	*figure;
 
-	i = 0;
-	pt = -1;
+	i = -1;
+	pt = -2;
 	if (!(figure = (t_tetra*)malloc(sizeof(t_tetra))))
 		return (NULL);
-	while (i < len)
+	while (++i < len && pt < 3)
 	{
 		if (str[i] == '#')
 		{
-			if (pt == -1)
-				pos = i;
-			else
+			if (++pt >= 0)
 			{
 				figure->x[pt] = i % 5 - pos % 5;
 				figure->y[pt] = i / 5 - pos / 5;
 			}
-			pt++;
+				else pos = i;
 		}
-		if (pt == 3)
-			break ;
-		i++;
 	}
 	figure->letter = index + 'A';
 	figure->next = NULL;
