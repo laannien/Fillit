@@ -6,13 +6,13 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 14:04:39 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:48:34 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			get_min_size(int count_fig)
+int				get_min_size(int count_fig)
 {
 	int size;
 
@@ -33,7 +33,7 @@ static t_tetra	*read_file(int fd)
 	i = -1;
 	while ((len = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		if (!(check(buf, len)) && write(1, "error\n", 6))
+		if ((i >= MAX_TETRA || !(check(buf, len))) && write(1, "error\n", 6))
 			return (NULL);
 		p_len = len;
 		i++;
@@ -48,10 +48,9 @@ static t_tetra	*read_file(int fd)
 	if (p_len != 20 && write(1, "error\n", 6))
 		return (NULL);
 	return (figure);
-		
 }
 
-int			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	int		i;
 	int		fd;
@@ -69,11 +68,9 @@ int			main(int argc, char **argv)
 		i++;
 		figure = figure->prev;
 	}
-	if (i >= MAX_TETRA && write(1, "error\n", 6))
-		return (0);
 	map.size = get_min_size(i);
 	map = *get_matrix(0, &map);
-	while (!fillit(i, figure, &map))
+	while (!fillit(figure, &map))
 		get_matrix(1, &map);
 	i = -1;
 	while (++i < map.size && write(1, map.matrix[i], map.size))

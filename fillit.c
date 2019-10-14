@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 13:04:14 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 14:41:39 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:49:08 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	del_fig(int x, int y, t_tetra *p, t_map *map)
 	return (1);
 }
 
-int			fillit(int count_fig, t_tetra *p, t_map *map)
+int			fillit(t_tetra *p, t_map *map)
 {
 	int		x;
 	int		y;
@@ -38,7 +38,7 @@ int			fillit(int count_fig, t_tetra *p, t_map *map)
 				{
 					if (!p->next)
 						return (1);
-					if (fillit(count_fig, p->next, map))
+					if (fillit(p->next, map))
 						return (1);
 					del_fig(x, y, p, map);
 				}
