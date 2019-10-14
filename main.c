@@ -6,20 +6,35 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 15:18:40 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:38:33 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int				get_min_size(int count_fig)
+static void	free_matrix(char **str, int len)
 {
-	int size;
+	int		i;
 
-	size = 2;
-	while (count_fig * 4 > size * size)
-		size++;
-	return (size);
+	i = 0;
+	while (i < len)
+	{
+		free(str[i]);
+		i++;
+	}
+}
+
+static	void	tetra_del(t_tetra *figure)
+{
+	t_tetra *tmp;
+
+	tmp = figure;
+	while (figure)
+	{
+		tmp = figure->next;
+		free(figure);
+		figure = tmp;
+	}
 }
 
 static t_tetra	*read_file(int fd)
@@ -63,18 +78,22 @@ int				main(int argc, char **argv)
 		return (0);
 	if (!(figure = read_file(fd)))
 		return (0);
-	i = 1;
-	while (figure->prev)
-	{
-		i++;
+	i = 0;
+	while (figure->prev && ++i)
 		figure = figure->prev;
-	}
-	map.size = get_min_size(i);
+	map.size = 2;
+	while (i * 4 > map.size * map.size)
+		map.size++;
 	map = *get_matrix(0, &map);
 	while (!fillit(figure, &map))
+	{
+		// free_matrix(map.matrix, map.size);
 		get_matrix(1, &map);
+	}
 	i = -1;
 	while (++i < map.size && write(1, map.matrix[i], map.size))
 		write(1, "\n", 1);
+	free_matrix(map.matrix, map.size);
+	tetra_del(figure);
 	return (close(fd));
 }

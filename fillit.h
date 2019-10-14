@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 15:07:38 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:52:32 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ int				check_file_content(char *str, int len);
 t_tetra			*save_figure(char *str, t_tetra *ptr, int index, int len);
 t_map			*get_matrix(int resize, t_map *map);
 int				fillit(t_tetra *p, t_map *map);
-int				push_figure(int x, int y, t_tetra *p, t_map *map);
 
 #endif
