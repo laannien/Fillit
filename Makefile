@@ -6,13 +6,13 @@
 #    By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 11:32:41 by djoye             #+#    #+#              #
-#    Updated: 2019/10/10 16:21:43 by uheirloo         ###   ########.fr        #
+#    Updated: 2019/10/14 15:02:14 by uheirloo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = check_file_content.c get_matrix.c main.c saver.c fillit.c push.c #algo.c#
+SRC = check_file_content.c get_matrix.c main.c save_figure.c fillit.c push_figure.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -23,12 +23,15 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-		@gcc $(FLAGS) $(SRC) -o $(NAME) $<
+		@gcc $(FLAGS) -c $(SRC)
+		@gcc $(FLAGS) $(OBJ) -o $(NAME) $<
 
 clean:
 		@/bin/rm -f $(OBJ)
 
 fclean: clean
-		@/bin/rm -f $(NAME) $(OBJ)
+		@/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY : clean fclean re

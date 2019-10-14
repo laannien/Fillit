@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:47:53 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 14:48:34 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:01:10 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static t_tetra	*read_file(int fd)
 	i = -1;
 	while ((len = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		if ((i >= MAX_TETRA || !(check(buf, len))) && write(1, "error\n", 6))
+		if ((i >= MAX_TETRA || !(check_file_content(buf, len))) &&
+		write(1, "error\n", 6))
 			return (NULL);
 		p_len = len;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: uheirloo <uheirloo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:49:37 by djoye             #+#    #+#             */
-/*   Updated: 2019/10/14 14:48:49 by uheirloo         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:00:26 by uheirloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct	s_map
 	char		**matrix;
 }				t_map;
 
-int				check(char *str, int len);
+int				check_file_content(char *str, int len);
 t_tetra			*save_figure(char *str, t_tetra *ptr, int index, int len);
 t_map			*get_matrix(int resize, t_map *map);
 int				fillit(t_tetra *p, t_map *map);
